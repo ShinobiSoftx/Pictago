@@ -1,42 +1,42 @@
-import React from "react"
-import { useState ,useEffect } from "react"
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import PostDetails from "../PostDetails/PostDetails";
 
+function AllPost() {
+  const [posts, setPosts] = useState([]);
+  const [selectedPost, setSelectedPost] = useState(null);
 
-function AllPost(){
+  useEffect(() => {
+    axios.get("http://localhost:5000/user").then((res) => {
+      setPosts(res.data);
+    });
+  }, []);
 
+  const handleClick = (post) => {
+    setSelectedPost(post);
+  };
 
-
-
-const [data,setData]=useState([])
-
-  const fetchData=()=>{
-    axios.get('http://localhost:5000/user').then(res=>{
-      setData(res.data)
-    })
+  if (selectedPost) {
+    return <PostDetails post={selectedPost} />;
   }
-  useEffect(()=>{fetchData()},[])
 
   return (
-
-
-<div id="container">
-    <h1>All Posts</h1>
-    
-  {data.map(post=>{
-   return (
-
-    <div id="card" key={post.ID_post}>
-     {post.url_image}
-      </div>
-  )})}
-  
-
-
-
-
-</div>
-);
+    <div className="row row-cols-1 row-cols-md-3 g-4">
+      {posts.map((post) => (
+        <div className="col-md-4" key={post.ID_post}>
+          <div className="card h-100">
+            <img
+              src={post.url_image}
+              className="card-img-top"
+              alt={post.title}
+              onClick={() => handleClick(post)} 
+              style={{ cursor: "pointer" }} 
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default AllPost;
