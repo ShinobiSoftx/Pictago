@@ -9,7 +9,7 @@ const UpdatePost = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    
+
   });
 
   useEffect(() => {
