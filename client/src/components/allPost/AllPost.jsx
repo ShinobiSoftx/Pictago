@@ -27,7 +27,8 @@ const [data,setData]=useState([])
    return (
 
     <div id="card" key={post.ID_post}>
-     {post.url_image}
+
+     <img src={post.url_image}/>
       </div>
   )})}
   
