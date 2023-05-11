@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './PostDetails.css';
+import axios from 'axios';
 
 const PostDetails = (props) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -24,9 +25,19 @@ const PostDetails = (props) => {
     setShowMenu(!showMenu);
   };
 
-  const handleDeleteClick = () => {
-    // code to handle delete button click
-  };
+ 
+
+  const handleDeleteClick = async (ID_post) => {
+      try {
+        console.log("dazdaz",props.post.ID_post);
+        await axios.delete(`http://localhost:5000/deletePost/${props.post.ID_post}`);
+        window.location.reload()
+      } catch (err) {
+        console.log(err);
+      }
+    };
+     
+  
 
   return (
     <div className="post-details-container">

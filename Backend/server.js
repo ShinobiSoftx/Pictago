@@ -13,7 +13,7 @@ app.get('/pins',(req,res) => {
     if (err) {
       console.log(err)
     }
-    res.send(result)
+    res.json(result)
   })
 })
 
@@ -70,6 +70,11 @@ app.put('/updatePost/:ID_post', (req, res) => {
       }
     }
   );
+
+
+
+
+  
 });
 app.get('/pins/:ID_post/comments', (req, res) => {
   const ID_post = req.params.ID_post;
