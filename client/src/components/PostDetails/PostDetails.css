@@ -1,4 +1,10 @@
 .post-details-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,24 +13,24 @@
   padding: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 800px;
-  width: 100%;
-  height: 90vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .post-image {
   flex: 1;
   margin-right: 20px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .post-image img {
   width: 100%;
-  max-width: 400px;
-  border-radius: 20px;
+  height: auto;
   object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.post-image img:hover {
+  transform: scale(1.1);
 }
 
 .post-content {
@@ -33,35 +39,50 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  height: 100%;
+  height: auto;
 }
 
 .post-content h2 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 10px;
   text-align: left;
+  color: #333;
 }
 
 .post-content p {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 20px;
-  text-align: left;
+  text-align: justify;
   line-height: 1.5;
+  color: #555;
 }
+
+.post-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 
 .comment-input {
   display: flex;
   align-items: center;
-  margin-top: auto;
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f8f8f8;
 }
 
 .comment-input input {
   width: 100%;
   padding: 10px;
-  border-radius: 30px;
+  border-radius: 20px;
   border: none;
   margin-right: 10px;
   font-size: 16px;
@@ -74,7 +95,7 @@
   background-color: #e60023;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 30px;
+  border-radius: 20px;
   border: none;
   font-size: 16px;
   cursor: pointer;
@@ -83,4 +104,50 @@
 
 .comment-input button:hover {
   background-color: #d1001d;
+}
+
+@media (max-width: 767px) {
+  .post-details-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .post-image {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+
+.dropdown-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dropdown-btn img {
+  width: 24px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.dropdown-menu button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.dropdown-menu button:hover {
+  color: #e60023;
 }

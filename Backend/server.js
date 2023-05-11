@@ -9,11 +9,10 @@ const connection= require('./database/index');
 
 
 app.get('/pins',(req,res) => {
- connection.query('SELECT * FROM post',function(err, result) {
+ connection.query('SELECT * FROM posts',function(err, result) {
     if (err) {
       console.log(err)
     }
-    console.log(result)
     res.json(result)
   })
 })
@@ -58,6 +57,11 @@ app.put('/updatePost/:ID_post', (req, res) => {
       }
     }
   );
+
+
+
+
+  
 });
 
 
