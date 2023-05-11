@@ -58,6 +58,21 @@ app.put('/updatePost/:ID_post', (req, res) => {
     }
   );
 });
+app.get('/pins/:ID_post/comments', (req, res) => {
+  const ID_post = req.params.ID_post;
+  connection.query(
+    'SELECT * FROM comments WHERE posts_ID_post = ?',
+    [ID_post],
+    function(err, result) {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Error fetching comments for post')
+      }
+      res.send(result)
+    }
+  )
+});
+
 
 app.post('/posts/:id/comments', (req, res) => {
   const postId = req.params.id;
@@ -75,20 +90,7 @@ app.post('/posts/:id/comments', (req, res) => {
   )
 })
 
-app.get('/pins/:ID_post/comments', (req, res) => {
-  const ID_post = req.params.ID_post;
-  connection.query(
-    'SELECT * FROM comments WHERE posts_ID_post = ?',
-    [ID_post],
-    function(err, result) {
-      if (err) {
-        console.log(err)
-        res.status(500).send('Error fetching comments for post')
-      }
-      res.send(result)
-    }
-  )
-});
+
 
 
 app.listen(PORT,()=>console.log(`Server listening on port : ${PORT}`))
