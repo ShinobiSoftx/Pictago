@@ -1,33 +1,11 @@
-import React from "react";
+import React from 'react'
 
-
-function AddPost(){
-
-
-
-
-return(
-
+const AddPost = () => {
+  return (
     <div>
-
+      ggg
     </div>
-    
-)
-
-
-
-
-
-
-
+  )
 }
 
-
-
-
-
-
-
-
-
-export default AddPost;
+export default AddPost

@@ -36,6 +36,9 @@ const PostDetails = (props) => {
         <div className="post-header">
           <h2>{props.post.title}</h2>
         </div>
+        <div className="post-date">
+        Posted on {new Date(props.post.created_at).toLocaleDateString()}
+        </div>
         <p>{props.post.description}</p>
         <div className="comment-input">
           <input type="text" placeholder="Add a comment" />
