@@ -59,7 +59,20 @@ app.put('/updatePost/:ID_post', (req, res) => {
   );
 });
 
-
-
+app.post('/posts/:id/comments', (req, res) => {
+  const postId = req.params.id;
+  const commentBody = req.body.body;
+  connection.query(
+    'INSERT INTO comments (posts_ID_post, body) VALUES (?, ?)',
+    [postId, commentBody],
+    function(err, result) {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Error adding comment to post')
+      }
+      res.send('Comment added to post')
+    }
+  )
+})
 
 app.listen(PORT,()=>console.log(`Server listening on port : ${PORT}`))
