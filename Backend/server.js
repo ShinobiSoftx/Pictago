@@ -59,6 +59,21 @@ app.put('/updatePost/:ID_post', (req, res) => {
   );
 });
 
+app.post('/posts/:id/comments', (req, res) => {
+  const postId = req.params.id;
+  const commentBody = req.body.body;
+  connection.query(
+    'INSERT INTO comments (posts_ID_post, body) VALUES (?, ?)',
+    [postId, commentBody],
+    function(err, result) {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Error adding comment to post')
+      }
+      res.send('Comment added to post')
+    }
+  )
+})
 
 app.get('/pins/:ID_post/comments', (req, res) => {
   const ID_post = req.params.ID_post;
