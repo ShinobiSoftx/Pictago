@@ -30,7 +30,7 @@ const PostDetails = (props) => {
         )}
       </div>
       <div className="post-image">
-        <img src={props.post.url_image} alt={props.post.title} />
+        <img src={props.post.image_url} alt={props.post.title} />
       </div>
       <div className="post-content">
         <div className="post-header">
