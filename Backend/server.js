@@ -17,6 +17,19 @@ app.get('/pins',(req,res) => {
   })
 })
 
+app.get('/pins/:ID_post', (req, res) => {
+  const { ID_post } = req.params;
+  connection.query(
+    'SELECT * FROM posts WHERE ID_post = ?', [ID_post], function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result[0]);
+      }
+    }
+  );
+});
+
 
 
 app.post("/addpost", (req,res) => {
@@ -43,11 +56,11 @@ else {res.send("post deleted ") }
 
 
 app.put('/updatePost/:ID_post', (req, res) => {
-  const { ID_post } = req.params;
-  const { title, description ,created_at,image_url } = req.body;
+  const {ID_post} = req.params;
+  const {title,description} = req.body;
   connection.query(
-    "UPDATE posts SET title = ?, `description` = ?, created_at = ?, image_url = ? WHERE ID_post = ?",
-    [title, description ,created_at,image_url,ID_post],
+    "UPDATE posts SET title = ?, `description` = ? WHERE ID_post = ?",
+    [title,description,ID_post],
     (error, result) => {
       if (error) {
         console.error(error);
@@ -63,6 +76,37 @@ app.put('/updatePost/:ID_post', (req, res) => {
 
   
 });
+app.get('/pins/:ID_post/comments', (req, res) => {
+  const ID_post = req.params.ID_post;
+  connection.query(
+    'SELECT * FROM comments WHERE posts_ID_post = ?',
+    [ID_post],
+    function(err, result) {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Error fetching comments for post')
+      }
+      res.send(result)
+    }
+  )
+});
+
+
+app.post('/posts/:id/comments', (req, res) => {
+  const postId = req.params.id;
+  const commentBody = req.body.body;
+  connection.query(
+    'INSERT INTO comments (posts_ID_post, body) VALUES (?, ?)',
+    [postId, commentBody],
+    function(err, result) {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Error adding comment to post')
+      }
+      res.send('Comment added to post')
+    }
+  )
+})
 
 
 
