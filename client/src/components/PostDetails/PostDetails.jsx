@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './PostDetails.css';
 
 const PostDetails = (props) => {
@@ -23,10 +24,6 @@ const PostDetails = (props) => {
     setShowMenu(!showMenu);
   };
 
-  const handleEditClick = () => {
-    // code to handle edit button click
-  };
-
   const handleDeleteClick = () => {
     // code to handle delete button click
   };
@@ -39,7 +36,7 @@ const PostDetails = (props) => {
         </button>
         {showMenu && (
           <div className="dropdown-menu">
-            <button onClick={handleEditClick}>Edit</button>
+            <Link to={`/update/${props.post.ID_post}`}>Edit</Link>
             <button onClick={handleDeleteClick}>Delete</button>
           </div>
         )}
@@ -57,19 +54,17 @@ const PostDetails = (props) => {
         <p>{props.post.description}</p>
         <h1>Comments</h1>
         <div className="comments">
-            {comments.map((comment) => (
-              <div key={comment.ID_comment} className="comment">
-                <div className="user">user:</div>
-                <div className="comment-text styled-comment">{comment.body}</div>
-              </div>
-            ))}
-          </div>
+          {comments.map((comment) => (
+            <div key={comment.ID_comment} className="comment">
+              <div className="user">user:</div>
+              <div className="comment-text styled-comment">{comment.body}</div>
+            </div>
+          ))}
+        </div>
         <div className="comment-input">
           <input type="text" placeholder="Add a comment" />
           <button>Post</button>
         </div>
-
-
       </div>
     </div>
   );
