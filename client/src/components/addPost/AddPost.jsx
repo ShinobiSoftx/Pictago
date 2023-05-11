@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
@@ -23,14 +21,6 @@ function AddPost({fetchData}) {
             // Retrieve the uploaded image's URL
             const imageUrl = response.data.secure_url;
             setImageFile(imageUrl)
-        
-            const body = {
-                title: title,
-                description: description,
-                url_image: imageUrl
-            };
-
-        
        setLoadings(false);
       });
     }
