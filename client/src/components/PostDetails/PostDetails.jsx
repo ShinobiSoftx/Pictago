@@ -23,9 +23,6 @@ const PostDetails = (props) => {
     setShowMenu(!showMenu);
   };
 
-  const handleEditClick = () => {
-    // code to handle edit button click
-  };
 
   const handleDeleteClick = () => {
     // code to handle delete button click
@@ -39,7 +36,7 @@ const PostDetails = (props) => {
         </button>
         {showMenu && (
           <div className="dropdown-menu">
-            <button onClick={handleEditClick}>Edit</button>
+            <button >Edit</button>
             <button onClick={handleDeleteClick}>Delete</button>
           </div>
         )}
