@@ -44,7 +44,7 @@ function Navbar() {
             Search
           </button>
         </form>
-      </div>
+      </div> 
     </div>
   </nav>
 );
