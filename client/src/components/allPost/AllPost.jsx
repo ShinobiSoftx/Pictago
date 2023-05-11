@@ -8,7 +8,7 @@ function AllPost() {
   const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/pin").then((res) => {
+    axios.get("http://localhost:5000/pins").then((res) => {
       setPosts(res.data);
     });
   }, []);
@@ -22,12 +22,12 @@ function AllPost() {
   }
 
   return (
-    <div class="post-container">
+    <div className="post-container">
     {posts.map((post) => (
-      <div class="post" key={post.ID_post}>
-        <div class="post-image">
+      <div className="post" key={post.ID_post}>
+        <div className="post-image">
           <img
-            src={post.url_image}
+            src={post.image_url}
             alt={post.title}
             onClick={() => handleClick(post)}
           />

@@ -8,11 +8,10 @@ import AddPost from "./components/addPost/AddPost";
 
 function App() {
   return (
-     
-      <BrowserRouter>
+    <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/addpost" element={<AddPost />}/>
+        <Route path="/add" element={<AddPost />}/>
         <Route path="/" element={<AllPost />}/>
         <Route path="/post/:ID_post" element={<PostDetails />} />
       </Routes>

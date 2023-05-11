@@ -151,3 +151,9 @@
 .dropdown-menu button:hover {
   color: #e60023;
 }
+
+.post-date {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #999;
+}

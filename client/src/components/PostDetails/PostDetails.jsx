@@ -30,11 +30,14 @@ const PostDetails = (props) => {
         )}
       </div>
       <div className="post-image">
-        <img src={props.post.url_image} alt={props.post.title} />
+        <img src={props.post.image_url} alt={props.post.title} />
       </div>
       <div className="post-content">
         <div className="post-header">
           <h2>{props.post.title}</h2>
+        </div>
+        <div className="post-date">
+    Posted on {new Date(props.post.created_at).toLocaleDateString()}
         </div>
         <p>{props.post.description}</p>
         <div className="comment-input">
