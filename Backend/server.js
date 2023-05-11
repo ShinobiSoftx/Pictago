@@ -48,8 +48,8 @@ const {title,description,created_at,image_url} = req.body
 app.delete("/deletePost/:ID_post" , (req , res ) => {
   const {ID_post} = req.params
 connection.query("DELETE from posts WHERE ID_post = ?" , ID_post  , (err) => {
-  if (err) {  console.log(err);}
-else {res.send("post deleted ") }
+  if (err) {console.log(err)}
+else {res.send("post deleted") }
 
 }) 
 })
