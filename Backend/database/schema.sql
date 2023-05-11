@@ -33,7 +33,14 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `pictago`.`comments` (
   `ID_comment` INT NOT NULL AUTO_INCREMENT,
   `body` LONGTEXT NOT NULL,
-  PRIMARY KEY (`ID_comment`))
+  `posts_ID_post` INT NOT NULL,
+  PRIMARY KEY (`ID_comment`, `posts_ID_post`),
+  INDEX `fk_comments_posts_idx` (`posts_ID_post` ASC) VISIBLE,
+  CONSTRAINT `fk_comments_posts`
+    FOREIGN KEY (`posts_ID_post`)
+    REFERENCES `pictago`.`posts` (`ID_post`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
