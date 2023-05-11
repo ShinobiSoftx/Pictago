@@ -24,14 +24,9 @@ function AddPost({fetchData}) {
             const imageUrl = response.data.secure_url;
             setImageFile(imageUrl)
         
-            const body = {
-                title: title,
-                description: description,
-                url_image: imageUrl
-            };
 
         
-       setLoadings(false);
+       setLoadings(false); 
       });
     }
 const handleUpload= async ()=>{
