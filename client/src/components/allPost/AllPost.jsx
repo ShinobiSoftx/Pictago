@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import PostDetails from "../PostDetails/PostDetails";
 import './AllPost.css'
-
-function AllPost() {
-  const [posts, setPosts] = useState([]);
+function AllPost({posts}) {
   const [selectedPost, setSelectedPost] = useState(null);
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/pins").then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
-
+  
   const handleClick = (post) => {
     setSelectedPost(post);
   };
