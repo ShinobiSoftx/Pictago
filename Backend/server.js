@@ -108,7 +108,15 @@ app.post('/posts/:id/comments', (req, res) => {
   )
 })
 
+app.delete('/deletepost/:ID_comment/comments',(req,res)=>{
 
+const{ID_comment}=req.params
+connection.query('DELETE FROM comments WHERE ID_comment=?',ID_comment,(err) => {
+  if (err) {console.log(err)}
+else {res.send("comment deleted")}
+}
+)
 
+})
 
 app.listen(PORT,()=>console.log(`Server listening on port : ${PORT}`))

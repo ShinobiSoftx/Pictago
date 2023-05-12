@@ -21,7 +21,10 @@ function AddPost({fetchData}) {
             // Retrieve the uploaded image's URL
             const imageUrl = response.data.secure_url;
             setImageFile(imageUrl)
-       setLoadings(false);
+        
+
+        
+       setLoadings(false); 
       });
     }
 const handleUpload= async ()=>{

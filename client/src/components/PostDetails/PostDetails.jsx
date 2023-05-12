@@ -6,6 +6,7 @@ import './PostDetails.css';
 const PostDetails = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [comments, setComments] = useState([]);
+  
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -35,8 +36,7 @@ const PostDetails = (props) => {
         console.log(err);
       }
     };
-     
-  
+
 
   return (
     <div className="post-details-container">
