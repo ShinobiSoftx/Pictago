@@ -6,15 +6,26 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 const connection= require('./database/index');
+const { title } = require('process');
 
 
 app.get('/pins',(req,res) => {
- connection.query('SELECT * FROM posts',function(err, result) {
-    if (err) {
-      console.log(err)
-    }
-    res.json(result)
-  })
+  try {
+    const { title } = req.query;
+    connection.query(
+      'SELECT * FROM posts WHERE title LIKE ?', ['%' + title + '%'], function (err, result) {
+        if (err) {
+          console.log(err);
+          res.status(500).send('Error querying database');
+        } else {
+          res.json(result);
+        }
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    res.status(500).send('Error processing request');
+  }
 })
 
 app.get('/pins/:ID_post', (req, res) => {
