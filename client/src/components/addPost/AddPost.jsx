@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { Image } from 'cloudinary-react';
+import "./AddPost.css"
 
 function AddPost({fetchData}) {
 
@@ -44,27 +45,55 @@ const handleUpload= async ()=>{
 }
 
 return (
-        <div>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-            </div>
-            <div>
-                <label htmlFor="description">Description:</label>
-                <input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-            </div>
-            <div>
-                <label htmlFor="image">Image:</label>
-                <input type="file" id="image" onChange={(e) => uploadImageToCloudinary(e.target.files[0])} />
-            </div>
-             {imageFile && (
-             <div>
-                    <p>Selected image:</p>
-                    <Image cloudName="dxoyhsag8" publicId={imageFile.name} width="200" />
-                </div>
-            )} 
-           { loadings ? "loading..." :<button onClick={handleUpload}>Add Post</button>}
-        </div>
+  <div className="add-post-form">
+  <div className="selected-image-container image-container">
+    {imageFile && (
+      <Image cloudName="dxoyhsag8" publicId={imageFile} width="300" crop="scale" />
+    )}
+    {!imageFile && (
+      <div className="no-image-text">No image selected</div>
+    )}
+  </div>
+  <div className="form-container">
+    <div className="form-group">
+      <label htmlFor="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="form-control"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="description">Description:</label>
+      <textarea
+        id="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        className="form-control"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="image">Image:</label>
+      <input
+        type="file"
+        id="image"
+        onChange={(e) => uploadImageToCloudinary(e.target.files[0])}
+        className="form-control-file"
+      />
+    </div>
+    {loadings ? (
+      <div className="loader">Loading...</div>
+    ) : (
+      <button onClick={handleUpload} className="btn btn-primary custom-button">
+      Create
+    </button>
+    
+    )}
+  </div>
+</div>
+
     );
 }
 
