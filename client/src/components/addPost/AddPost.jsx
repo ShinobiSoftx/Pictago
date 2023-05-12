@@ -8,6 +8,7 @@ function AddPost({fetchData}) {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [category,setCategory]=useState("")
     const [imageFile, setImageFile] = useState(null);
     const [loadings, setLoadings] = useState(false)
     const uploadImageToCloudinary = (picture) => {
@@ -35,6 +36,7 @@ const handleUpload= async ()=>{
         title: title,
         description: description,
         image_url: imageFile,
+        category:category,
         created_at,
     };
 
@@ -69,6 +71,15 @@ return (
         id="description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        className="form-control"
+      />
+    </div>
+    <div className="form-group">
+      <label htmlFor="category">category:</label>
+      <textarea
+        id="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
         className="form-control"
       />
     </div>

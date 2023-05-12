@@ -18,6 +18,7 @@ const UpdatePost = () => {
         setFormData({
           title: res.data.title,
           description: res.data.description,
+          
         });
       })
       .catch(err => {
