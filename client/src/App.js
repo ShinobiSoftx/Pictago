@@ -9,8 +9,10 @@ import UpdatePost from "./components/update/updatePost";
 
 function App() {
   return (
+    <div>
+ 
     <BrowserRouter>
-      <Navbar /> 
+    <Navbar />
       <Routes>
         <Route path="/add" element={<AddPost />}/>
         <Route path="/" element={<AllPost />}/>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/update/:ID_post" element={<UpdatePost/>} />
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 

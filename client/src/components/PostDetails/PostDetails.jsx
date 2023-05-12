@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './PostDetails.css';
+        import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 
 const PostDetails = (props) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -63,14 +65,20 @@ const PostDetails = (props) => {
         </div>
         <p>{props.post.description}</p>
         <h1>Comments</h1>
+
         <div className="comments">
-          {comments.map((comment) => (
-            <div key={comment.ID_comment} className="comment">
-              <div className="user">user:</div>
-              <div className="comment-text styled-comment">{comment.body}</div>
-            </div>
-          ))}
-        </div>
+  {comments.map((comment) => (
+    <div key={comment.ID_comment} className="comment">
+      <div className="user">user:</div>
+      <div className="comment-text styled-comment">{comment.body}</div>
+      <div className="icons">
+        <FontAwesomeIcon icon={faTrash} />
+        <div className="icon-space"></div>
+        <FontAwesomeIcon icon={faPen} />
+      </div>
+    </div>
+  ))}
+</div>
         <div className="comment-input">
           <input type="text" placeholder="Add a comment" />
           <button>Post</button>
