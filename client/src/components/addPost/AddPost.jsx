@@ -56,7 +56,7 @@ const handleUpload= async ()=>{
       draggable: true,
       progress: undefined,
       onClose: () => {
-        window.location.href = "/";
+        window.location.href = "/posts";
       }
     });
 }
@@ -93,14 +93,21 @@ return (
       />
     </div>
     <div className="form-group">
-      <label htmlFor="category">category:</label>
-      <textarea
-        id="category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="form-control"
-      />
-    </div>
+  <label htmlFor="category">Category:</label>
+  <select
+    id="category"
+    value={category}
+    onChange={(e) => setCategory(e.target.value)}
+    className="form-control"
+  >
+    <option value="">Select a category</option>
+    <option value="anime">Anime</option>
+    <option value="games">Games</option>
+    <option value="fashion">Fashion</option>
+    <option value="travel">Travel</option>
+    <option value="cooking">Cooking</option>
+  </select>
+</div>
     <div className="form-group">
       <label htmlFor="image">Image:</label>
       <input

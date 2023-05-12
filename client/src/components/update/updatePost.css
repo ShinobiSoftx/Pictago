@@ -37,7 +37,7 @@
   font-size: 24px;
   padding: 12px 24px;
   border-radius: 50px;
-  background-color: red;
+  background-color: #ff206e;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -45,7 +45,7 @@
 }
 
 .update-form button:hover {
-  background-color: #bd002f;
+  background-color: #ff206e;
 }
 
 .update-container {
