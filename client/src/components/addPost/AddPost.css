@@ -1,62 +1,77 @@
-.add{
-    transform: translate(604px, 126px) 
+.add-post-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-#des{
-    transform: translate(-49px, 0px);
+.add-post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  background-color: #ffffff;
+  padding: 30px;
 }
 
-h3{
+.add-post-form label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.add-post-form input,
+.add-post-form textarea {
+  font-size: 18px;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-post-form input[type="file"] {
+  margin-bottom: 36px;
+}
+
+.add-post-form .selected-image p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.add-post-form button {
+  font-size: 24px;
+  padding: 12px 24px;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .add-post-container {
+    height: 400px;
+    width: 400px;
+  }
   
-  color: rgba(69, 69, 69, 0.767);
-  transform: translate(-16px, 10px);
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  .add-post-form {
+    width: 90%;
+    padding: 20px;
+  }
 }
 
-#image{
-    transform:translate(5px, 11px);
-    color: crimson;
-    font-size: larger;
-    
+.custom-button {
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-
-.button3 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #f44336;
-    font-size: larger;
-    transform: translate(84px, 10px);
-    border-radius: 10px;
-  }
-  
-  .button3:hover {
-    background-color: #f44336;
-    color: white;
-  }
-
-
-  #title{
-    transform: translate(0px, 8px);
-    background-color: rgba(46, 46, 46, 0.352);
- border-radius: 10px;
-  }
-
-  #description{
-    background-color: rgba(46, 46, 46, 0.352);
- border-radius: 10px;
- transform: translate(-87px, 10px);
-  }
-
-  #az{
-    transform: translate(-55px, 10px);
-  }
-
-  #img{
-    transform: translate(-38px, 10px);
-  }
-
- input{
-    color: aliceblue;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- } 
+.custom-button:hover {
+  background-color: #bd002f;
+}

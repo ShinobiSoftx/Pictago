@@ -157,6 +157,7 @@
   margin-top: 5px;
   color: #999;
 }
+
 .styled-comment {
   background-color: #f8f8f8;
   border-radius: 10px;
@@ -165,3 +166,33 @@
   font-size: 16px;
   color: #333;
 }
+
+.comment {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.icons > * {
+  margin-left: 8px;
+}
+
+.comment-text {
+  margin-right: auto;
+}
+
+
+
+
+

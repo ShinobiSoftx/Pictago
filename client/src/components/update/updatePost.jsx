@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import "./updatePost.css"
 
 const UpdatePost = () => {
   const { ID_post } = useParams();
@@ -44,19 +45,23 @@ const UpdatePost = () => {
   };
 
   return (
-    <div>
-      <h1>Update {formData.title}</h1>
-    <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="title" className="form-label">Title</label>
-        <input type="text" className="form-control" id="title" name="title" value={formData.title} onChange={handleChange} required />
+    <div className="update-container">
+      <div className="image-container">
+        <img src={post.image_url} alt={post.title} />
       </div>
-      <div className="mb-3">
-        <label htmlFor="description" className="form-label">Description</label>
-        <textarea className="form-control" id="description" name="description" value={formData.description} onChange={handleChange} required></textarea>
+      <div className="form-container">
+        <form onSubmit={handleSubmit} className="update-form">
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">Title</label>
+            <input type="text" className="form-control" id="title" name="title" value={formData.title} onChange={handleChange} required />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">Description</label>
+            <textarea className="form-control" id="description" name="description" value={formData.description} onChange={handleChange} required></textarea>
+          </div>
+          <button type="submit" className="btn btn-primary" onClick={()=>console.log(formData.title)}>Update</button>
+        </form>
       </div>
-      <button type="submit" className="btn btn-primary" onClick={()=>console.log(formData.title)}>Update</button>
-    </form>
     </div>
   );
 };

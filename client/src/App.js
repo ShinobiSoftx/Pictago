@@ -6,20 +6,23 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Navbar from "./components/navbar/NavBar";
 import AddPost from "./components/addPost/AddPost";
 import UpdatePost from "./components/update/updatePost";
-import AddComment from "./components/comments/Addcomm";
+
 
 function App() {
   return (
+    <div>
+ 
     <BrowserRouter>
-      <Navbar /> 
+    <Navbar />
       <Routes>
         <Route path="/add" element={<AddPost />}/>
         <Route path="/" element={<AllPost />}/>
         <Route path="/post/:ID_post" element={<PostDetails />} />
         <Route path="/update/:ID_post" element={<UpdatePost/>} />
-        <Route path="/posts/:ID_post/comments" element={<AddComment/>} />
+  
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 
