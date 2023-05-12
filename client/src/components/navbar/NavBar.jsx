@@ -23,7 +23,7 @@ return (
                 </NavLink>
             </div>
             <div className='input-group'>
-            <input type='text' placeholder='Search Whatever You Want'/>
+            <input type='text' placeholder='Search for a post'/>
             <HiSearch fontSize={21} color="green" id='search'/>
             <div id='Color-switcher' onClick={()=> setToggle(!toggle)}>
                 <div id={toggle ? 'Color-switcher-mover' :  'Color-switcher-moved'}></div>
