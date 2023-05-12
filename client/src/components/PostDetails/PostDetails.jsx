@@ -9,7 +9,7 @@ const PostDetails = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [comments, setComments] = useState([]);
   const[commentBody,setCommentBody]=useState("")
-  const [refresh, setRefresh] = useState(false)
+
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -22,7 +22,7 @@ const PostDetails = (props) => {
       }
     };
     fetchComments();
-  }, [props.post.ID_post]);
+  }, [props.post.ID_post],comments);
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -31,20 +31,22 @@ const PostDetails = (props) => {
  
 
   const handleDeleteClick = async (ID_post) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+    if (confirmDelete) {
       try {
-        console.log("dazdaz",props.post.ID_post);
         await axios.delete(`http://localhost:5000/deletePost/${props.post.ID_post}`);
-        window.location.reload()
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }
-    };
+    }
+  };
 
     const handleCommentPost = async () => {
       try {
         const response = await axios.post(`http://localhost:5000/posts/${props.post.ID_post}/comments`, { body: commentBody });
-        setComments([...comments, response.data])
-        setRefresh(!refresh);
+        setComments([...comments, response.data]);
+        setCommentBody("");
         
       } catch (error) {
         console.error(error);
@@ -52,12 +54,15 @@ const PostDetails = (props) => {
     };
 
     const handleCommentDelete = async (ID_comment) => {
+      const confirmDelete = window.confirm("Are you sure you want to delete this comment?");
+       if (confirmDelete) {
       try{
         await axios.delete(`http://localhost:5000/deleteComment/${ID_comment}/comments`);
       } catch(error){
         console.error(error);
       }
     }
+  }
 
   return (
     <div className="post-details-container">
@@ -66,10 +71,11 @@ const PostDetails = (props) => {
           <img src="/assets/images/dots.png" alt="menu" />
         </button>
         {showMenu && (
-          <div className="dropdown-menu">
-            <Link to={`/update/${props.post.ID_post}`}>Edit</Link>
-            <button onClick={handleDeleteClick}>Delete</button>
-          </div>
+         <div className="dropdown-menu">
+         <Link to={`/update/${props.post.ID_post}`} className="dropdown-menu-button">Edit</Link>
+         <button onClick={handleDeleteClick} className="dropdown-btn">Delete</button>
+       </div>
+       
         )}
       </div>
       <div className="post-image">

@@ -137,20 +137,27 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 10px;
 }
 
-.dropdown-menu button {
+.dropdown-menu-button {
   border: none;
   background: transparent;
   cursor: pointer;
   font-size: 16px;
   margin-bottom: 5px;
+  color: #000;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
 }
 
-.dropdown-menu button:hover {
-  color: #e60023;
+.dropdown-menu-button:hover {
+  color: #ff0000;
 }
+
 
 .post-date {
   font-size: 14px;
@@ -191,6 +198,77 @@
 .comment-text {
   margin-right: auto;
 }
+.icons button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.icons > button:hover,
+.icons > button:focus {
+  background-color: transparent;
+  outline: none;
+}
+
+.icons > button:hover > svg,
+.icons > button:focus > svg {
+  color: #e60023;
+  transition: color 0.2s ease;
+}
+
+.dropdown-btn img:hover {
+  transform: rotate(180deg);
+  color: red;
+}
+
+.dropdown-btn img:hover {
+  transform: scale(1.1);
+  color: red;
+}
+
+button.edit-button {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button.edit-button:hover {
+  background-color: #c82333;
+}
+
+button.edit-button:active {
+  background-color: #bd2130;
+}
+
+
+.dropdown-menu-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #000;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.dropdown-menu-button:hover {
+  color: #ff0000;
+}
+
+
+
+
 
 
 

@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { Image } from 'cloudinary-react';
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./AddPost.css"
 
 function AddPost({fetchData}) {
@@ -11,6 +14,7 @@ function AddPost({fetchData}) {
     const [category,setCategory]=useState("")
     const [imageFile, setImageFile] = useState(null);
     const [loadings, setLoadings] = useState(false)
+    
     const uploadImageToCloudinary = (picture) => {
         setLoadings(true)
         const formData = new FormData();
@@ -42,10 +46,24 @@ const handleUpload= async ()=>{
 
     const {data } = await axios.post("http://localhost:5000/addpost", body)
     console.log(data)
+    window.location.href = "/";
+    toast.dark("Posted!", {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      onClose: () => {
+        window.location.href = "/";
+      }
+    });
 }
 
 return (
   <div className="add-post-form">
+ <ToastContainer />
   <div className="selected-image-container image-container">
     {imageFile && (
       <Image cloudName="dxoyhsag8" publicId={imageFile} width="300" crop="scale" />
