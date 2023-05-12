@@ -51,6 +51,14 @@ const PostDetails = (props) => {
       }
     };
 
+    const handleCommentDelete = async (ID_comment) => {
+      try{
+        await axios.delete(`http://localhost:5000/deleteComment/${ID_comment}/comments`);
+      } catch(error){
+        console.error(error);
+      }
+    }
+
   return (
     <div className="post-details-container">
       <div className="post-actions">
@@ -78,17 +86,21 @@ const PostDetails = (props) => {
         <h1>Comments</h1>
 
         <div className="comments">
-  {comments.map((comment,i) => (
-    <div key={i} className="comment">
-      <div className="user">user:</div>
-      <div className="comment-text styled-comment">{comment.body}</div>
-      <div className="icons">
+        {comments.map((comment, i) => (
+  <div key={i} className="comment">
+    <div className="user">user:</div>
+    <div className="comment-text styled-comment">{comment.body}</div>
+    <div className="icons">
+      <button onClick={() => handleCommentDelete(comment.ID_comment)}> 
         <FontAwesomeIcon icon={faTrash} />
-        <div className="icon-space"></div>
+      </button>
+      <div className="icon-space"></div>
+      <button > 
         <FontAwesomeIcon icon={faPen} />
-      </div>
+      </button>
     </div>
-  ))}
+  </div>
+))}
 </div>
 <div className="comment-input">
   <input type="text" placeholder="Add a comment" onChange={(event) => setCommentBody(event.target.value)} />

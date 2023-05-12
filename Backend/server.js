@@ -126,7 +126,7 @@ app.post('/posts/:id/comments', (req, res) => {
   )
 })
 
-app.delete('/deletepost/:ID_comment/comments',(req,res)=>{
+app.delete('/deleteComment/:ID_comment/comments',(req,res)=>{
 
 const{ID_comment}=req.params
 connection.query('DELETE FROM comments WHERE ID_comment=?',ID_comment,(err) => {
