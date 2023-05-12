@@ -45,14 +45,32 @@ const {title,description,created_at,image_url} = req.body
 
 
 
-app.delete("/deletePost/:ID_post" , (req , res ) => {
-  const {ID_post} = req.params
-connection.query("DELETE from posts WHERE ID_post = ?" , ID_post  , (err) => {
-  if (err) {  console.log(err);}
-else {res.send("post deleted ") }
-
-}) 
-})
+app.delete("/deletePost/:ID_post", (req, res) => {
+  const { ID_post } = req.params;
+  connection.query(
+    "DELETE FROM comments WHERE posts_ID_post = ?",
+    ID_post,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error deleting comments");
+        return;
+      }
+      connection.query(
+        "DELETE FROM posts WHERE ID_post = ?",
+        ID_post,
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            res.status(500).send("Error deleting post");
+            return;
+          }
+          res.send("Post and comments deleted");
+        }
+      );
+    }
+  );
+});
 
 
 app.put('/updatePost/:ID_post', (req, res) => {
@@ -108,7 +126,16 @@ app.post('/posts/:id/comments', (req, res) => {
   )
 })
 
+app.delete('/deletepost/:ID_comment/comments',(req,res)=>{
 
+const{ID_comment}=req.params
+connection.query('DELETE FROM comments WHERE ID_comment=?',ID_comment,(err) => {
+  if (err) {console.log(err)}
+else {res.send("comment deleted")}
+}
 
+)
+
+})
 
 app.listen(PORT,()=>console.log(`Server listening on port : ${PORT}`))

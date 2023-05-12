@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/NavBar";
 import AddPost from "./components/addPost/AddPost";
 import UpdatePost from "./components/update/updatePost";
 
+
 function App() {
   return (
     <div>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<AllPost />}/>
         <Route path="/post/:ID_post" element={<PostDetails />} />
         <Route path="/update/:ID_post" element={<UpdatePost/>} />
+  
       </Routes>
     </BrowserRouter>
     </div>
