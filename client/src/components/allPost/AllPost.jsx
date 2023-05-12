@@ -9,9 +9,21 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./AllPost.css";
 
+
+
 function AllPost() {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
+
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  const shuffledPosts = shuffleArray(posts);
 
   useEffect(() => {
     axios.get("http://localhost:5000/pins").then((res) => {
@@ -43,7 +55,7 @@ function AllPost() {
   return (
     <div>
 <div className="post-container">
-  {posts.map((post) => (
+  {shuffledPosts.map((post) => (
     <div className="post" key={post.ID_post}>
       <div className="post-image">
         <img

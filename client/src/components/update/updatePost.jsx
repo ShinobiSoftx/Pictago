@@ -38,7 +38,7 @@ const UpdatePost = () => {
     axios.put(`http://localhost:5000/updatePost/${post.ID_post}`,formData)
       .then(res => {
         console.log(res);
-        window.location.href = '/';
+        window.location.href = '/posts';
       })
       .catch(err => {
         console.error(err);

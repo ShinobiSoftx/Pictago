@@ -1,6 +1,6 @@
 .post-details-container {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -92,7 +92,7 @@
 }
 
 .comment-input button {
-  background-color: #e60023;
+  background-color: #ff206e;
   color: #fff;
   padding: 10px 20px;
   border-radius: 20px;
@@ -103,7 +103,7 @@
 }
 
 .comment-input button:hover {
-  background-color: #d1001d;
+  background-color: #ff206e;
 }
 
 @media (max-width: 767px) {
@@ -155,7 +155,7 @@
 }
 
 .dropdown-menu-button:hover {
-  color: #ff0000;
+  color: #ff206e;
 }
 
 
@@ -212,22 +212,22 @@
 
 .icons > button:hover > svg,
 .icons > button:focus > svg {
-  color: #e60023;
+  color: #ff206e;
   transition: color 0.2s ease;
 }
 
 .dropdown-btn img:hover {
   transform: rotate(180deg);
-  color: red;
+  color: #ff206e;
 }
 
 .dropdown-btn img:hover {
   transform: scale(1.1);
-  color: red;
+  color: #ff206e;
 }
 
 button.edit-button {
-  background-color: #dc3545;
+  background-color: #ff206e;
   border: none;
   color: #fff;
   padding: 5px 10px;
@@ -241,11 +241,11 @@ button.edit-button {
 }
 
 button.edit-button:hover {
-  background-color: #c82333;
+  background-color: #ff206e;
 }
 
 button.edit-button:active {
-  background-color: #bd2130;
+  background-color: #ff206e;
 }
 
 
@@ -263,7 +263,7 @@ button.edit-button:active {
 }
 
 .dropdown-menu-button:hover {
-  color: #ff0000;
+  color: #ff206e;
 }
 
 

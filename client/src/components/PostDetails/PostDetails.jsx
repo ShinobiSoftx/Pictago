@@ -88,6 +88,9 @@ const PostDetails = (props) => {
         <div className="post-date">
           Posted on {new Date(props.post.created_at).toLocaleDateString()}
         </div>
+        <div className="post-category">
+      Category: {props.post.category}
+    </div>
         <p>{props.post.description}</p>
         <h1>Comments</h1>
 
