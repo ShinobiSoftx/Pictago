@@ -65,11 +65,11 @@ const UpdatePost = () => {
       <div className="form-container">
         <form onSubmit={handleSubmit} className="update-form">
           <div className="mb-3">
-            <label htmlFor="title" className="form-label">Title</label>
+            <label htmlFor="title" className="form-label">Title:</label>
             <input type="text" className="form-control" id="title" name="title" value={formData.title} onChange={handleChange} required />
           </div>
           <div className="mb-3">
-            <label htmlFor="description" className="form-label">Description</label>
+            <label htmlFor="description" className="form-label">Description:</label>
             <textarea className="form-control" id="description" name="description" value={formData.description} onChange={handleChange} required></textarea>
           </div>
           <button type="submit" className="btn btn-primary" onClick={()=>console.log(formData.title)}>Update</button>

@@ -112,7 +112,7 @@ return (
     <option value="vehicles">Vehicles</option>
   </select>
 </div>
-    <div className="form-group">
+    <div className="image">
       <label htmlFor="image">Image:</label>
       <input
         type="file"
