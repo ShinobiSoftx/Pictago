@@ -106,6 +106,10 @@ return (
     <option value="fashion">Fashion</option>
     <option value="travel">Travel</option>
     <option value="cooking">Cooking</option>
+    <option value="fitness">Fitness</option>
+    <option value="music">Music</option>
+    <option value="decoration">Decoration</option>
+    <option value="vehicles">Vehicles</option>
   </select>
 </div>
     <div className="form-group">

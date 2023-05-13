@@ -17,6 +17,10 @@ import Saved from "./components/categories/saved";
 import Categories from "./components/categories/categories";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Decoration from "./components/categories/Photography";
+import Vehicles from "./components/categories/Vehicles";
+import Fitness from "./components/categories/Fitness";
+import Music from "./components/categories/Music";
 
 
 
@@ -76,11 +80,15 @@ function App() {
           <Route path="/posts" element={<AllPost  posts={posts} handleSavePost={handleSavePost}/>}/>
           <Route path="/post/:ID_post" element={<PostDetails />} />
           <Route path="/update/:ID_post" element={<UpdatePost/>} />
-          <Route path="/anime" element={<Anime/>} />
-          <Route path="/cooking" element={<Cooking/>} />
-          <Route path="/games" element={<Games/>} />
-          <Route path="/fashion" element={<Fashion />} />
-          <Route path="/travel" element={<Travel/>} />
+          <Route path="/anime" element={<Anime handleSavePost={handleSavePost}/>} />
+          <Route path="/cooking" element={<Cooking handleSavePost={handleSavePost}/>} />
+          <Route path="/games" element={<Games handleSavePost={handleSavePost}/>} />
+          <Route path="/fashion" element={<Fashion handleSavePost={handleSavePost}/>} />
+          <Route path="/travel" element={<Travel handleSavePost={handleSavePost}/>} />
+          <Route path="/music" element={<Music handleSavePost={handleSavePost}/>} />
+          <Route path="/fitness" element={<Fitness handleSavePost={handleSavePost}/>} />
+          <Route path="/vehicles" element={<Vehicles handleSavePost={handleSavePost}/>} />
+          <Route path="/decoration" element={<Decoration handleSavePost={handleSavePost}/>} />
           <Route path="/categories" element={<Categories/>} />
           <Route path="/saved" element={<Saved />} />
         </Routes>
