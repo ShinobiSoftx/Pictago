@@ -1,35 +1,37 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import PostDetails from "../PostDetails/PostDetails";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./AllPost.css";
 
-
-
-function AllPost({posts}) {
-
+function Fashion() {
+  const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
 
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-  const shuffledPosts = shuffleArray(posts);
-
-
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/pins")
+      .then((response) => {
+        const fashionPosts = response.data.filter(
+          (post) => post.category === "fashion"
+        );
+        setPosts(fashionPosts);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleClick = (post) => {
     setSelectedPost(post);
   };
+  if (selectedPost) {
+    return <PostDetails post={selectedPost} />;
+  }
 
   const handleShare = (imageUrl) => {
     navigator.clipboard.writeText(imageUrl);
@@ -44,38 +46,33 @@ function AllPost({posts}) {
     });
   };
 
-  if (selectedPost) {
-    return <PostDetails post={selectedPost} />;
-  }
-
   return (
-    <div>
-<div className="post-container">
-  {shuffledPosts.map((post) => (
-    <div className="post" key={post.ID_post}>
-      <div className="post-image">
-        <img
-          src={post.image_url}
-          alt={post.title}
-          onClick={() => handleClick(post)}
-        />
-        <div className="post-buttons">
+    <div className="post-container">
+      {posts.map((post) =>
+        post.category === "fashion" ? (
+          <div className="post" key={post.ID_post}>
+            <div className="post-image">
+              <img
+                src={post.image_url}
+                alt={post.title}
+                onClick={() => handleClick(post)}
+              />
+               <div className="post-buttons">
           <button className="save-button" >Save</button>
           <button className="share-button" onClick={() => handleShare(post.image_url)}>
                 <FontAwesomeIcon icon={faLink} />
               </button>
         </div>
-      </div>
-    </div>
-  ))}
-</div>
-<Link to="/add" className="add-button">
+            </div>
+          </div>
+        ) : null
+      )}
+      <Link to="/add" className="add-button">
           <FontAwesomeIcon icon={faPlus} />
         </Link>
 <ToastContainer />
-</div>
-
+    </div>
   );
 }
 
-export default AllPost;
+export default Fashion;

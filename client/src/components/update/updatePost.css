@@ -1,0 +1,91 @@
+.update-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.update-form label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.update-form input,
+.update-form textarea {
+  font-size: 18px;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-form input[type="file"] {
+  margin-bottom: 36px;
+}
+
+.update-form .selected-image p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.update-form button {
+  font-size: 24px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background-color: #ff206e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.update-form button:hover {
+  background-color: #ff206e;
+}
+
+.update-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.image-container {
+  margin-right: 20px;
+  width: 40%;
+  max-width: 400px;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.form-container {
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  .update-form {
+    width: 90%;
+    padding: 20px;
+  }
+  .update-container {
+    flex-direction: column;
+  }
+  .image-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+  }
+  .form-container {
+    width: 100%;
+  }
+}
