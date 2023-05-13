@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PostDetails from "../PostDetails/PostDetails";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
@@ -10,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Saved() {
   const [posts, setPosts] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
     axios
@@ -23,13 +21,6 @@ function Saved() {
       });
   }, []);
 
-  const handleClick = (post) => {
-    setSelectedPost(post);
-  };
-
-  if (selectedPost) {
-    return <PostDetails post={selectedPost} />;
-  }
 
   const handleShare = (imageUrl) => {
     navigator.clipboard.writeText(imageUrl);
@@ -84,11 +75,10 @@ function Saved() {
       {posts.map((post) => (
         <div className="post" key={post.ID_post}>
           <div className="post-image">
-            <img
-              src={post.image_url}
-              alt={post.title}
-              onClick={() => handleClick(post)}
-            />
+          <Link to={`/post/${post.ID_post}`}> <img
+          src={post.image_url}
+          alt={post.title}
+        /> </Link>
             <div className="post-buttons">
               <button className="save-button" onClick={() => handleUnsavePost(post.ID_post)}>Unsave</button>
               <button
