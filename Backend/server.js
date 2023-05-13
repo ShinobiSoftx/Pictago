@@ -10,11 +10,20 @@ const { title } = require('process');
 
 
 
+
+
+
+
 app.get('/pins', (req, res) => {
   try {
     const { title, category } = req.query;
-    let query = 'SELECT * FROM posts WHERE title LIKE ?';
-    let queryParams = ['%' + title + '%'];
+    let query = 'SELECT * FROM posts WHERE 1=1';
+    const queryParams = [];
+
+    if (title) {
+      query += ' AND title LIKE ?';
+      queryParams.push('%' + title + '%');
+    }
 
     if (category) {
       query += ' AND category = ?';
@@ -35,6 +44,8 @@ app.get('/pins', (req, res) => {
   }
 });
 
+
+
 app.get('/pins/:ID_post', (req, res) => {
   const { ID_post } = req.params;
   connection.query(
@@ -51,8 +62,8 @@ app.get('/pins/:ID_post', (req, res) => {
 
 
 app.post("/addpost", (req,res) => {
-const {title,description,created_at,image_url} = req.body
-  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url},(err) => {
+const {title,description,created_at,category,image_url} = req.body
+  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url,category},(err) => {
     if (err) return res.send(err)
     res.send("post added")
   });

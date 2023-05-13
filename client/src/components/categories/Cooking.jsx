@@ -14,7 +14,7 @@ function Cooking() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/pins")
+      .get("http://localhost:5000/pins?category=cooking")
       .then((response) => {
         const cookingPosts = response.data.filter(
           (post) => post.category === "cooking"
