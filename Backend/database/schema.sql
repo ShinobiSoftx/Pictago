@@ -5,12 +5,8 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- MySQL Workbench Forward Engineering
-
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
+-- Schema mydb
+-- -----------------------------------------------------
 -- -----------------------------------------------------
 -- Schema pictago
 -- -----------------------------------------------------
@@ -18,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema pictago
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `pictago` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `pictago` DEFAULT CHARACTER SET utf8mb3 ;
 USE `pictago` ;
 
 -- -----------------------------------------------------
@@ -31,8 +27,11 @@ CREATE TABLE IF NOT EXISTS `pictago`.`posts` (
   `image_url` LONGTEXT NOT NULL,
   `created_at` DATETIME NOT NULL,
   `category` VARCHAR(45) NOT NULL,
+  `saved` TINYINT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID_post`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 53
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
@@ -46,10 +45,10 @@ CREATE TABLE IF NOT EXISTS `pictago`.`comments` (
   INDEX `fk_comments_posts_idx` (`posts_ID_post` ASC) VISIBLE,
   CONSTRAINT `fk_comments_posts`
     FOREIGN KEY (`posts_ID_post`)
-    REFERENCES `pictago`.`posts` (`ID_post`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    REFERENCES `pictago`.`posts` (`ID_post`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -16,7 +16,7 @@ const { title } = require('process');
 
 app.get('/pins', (req, res) => {
   try {
-    const { title, category } = req.query;
+    const { title, category, saved } = req.query;
     let query = 'SELECT * FROM posts WHERE 1=1';
     const queryParams = [];
 
@@ -28,6 +28,11 @@ app.get('/pins', (req, res) => {
     if (category) {
       query += ' AND category = ?';
       queryParams.push(category);
+    }
+
+    if (saved) {
+      query += ' AND saved = ?';
+      queryParams.push(saved);
     }
 
     connection.query(query, queryParams, function (err, result) {
@@ -46,6 +51,7 @@ app.get('/pins', (req, res) => {
 
 
 
+
 app.get('/pins/:ID_post', (req, res) => {
   const { ID_post } = req.params;
   connection.query(
@@ -61,13 +67,18 @@ app.get('/pins/:ID_post', (req, res) => {
 
 
 
-app.post("/addpost", (req,res) => {
-const {title,description,created_at,category,image_url} = req.body
-  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url,category},(err) => {
-    if (err) return res.send(err)
-    res.send("post added")
-  });
+app.post("/addpost", (req, res) => {
+  const { title, description, created_at, category, image_url } = req.body;
+  connection.query(
+    "INSERT INTO posts SET ?",
+    { title, description, created_at, image_url, category, saved: 0 },
+    (err) => {
+      if (err) return res.send(err);
+      res.send("post added");
+    }
+  );
 });
+
 
 
 
@@ -117,6 +128,25 @@ app.put('/updatePost/:ID_post', (req, res) => {
       }
     }
   );
+});
+
+app.put('/updateSaved/:ID_post', (req, res) => {
+  const {ID_post} = req.params;
+  const {saved} = req.body;
+  connection.query(
+    "UPDATE posts SET saved = ? WHERE ID_post = ?",
+    [saved, ID_post],
+    (error, result) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log(`post saved: ${ID_post}`);
+        res.send('post saved');
+      }
+    }
+  );
+
+  
 
 
 

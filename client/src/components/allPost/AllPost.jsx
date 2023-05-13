@@ -10,7 +10,7 @@ import "./AllPost.css";
 
 
 
-function AllPost({posts}) {
+function AllPost({posts, handleSavePost}) {
 
   const [selectedPost, setSelectedPost] = useState(null);
 
@@ -59,7 +59,7 @@ function AllPost({posts}) {
           onClick={() => handleClick(post)}
         /> 
         <div className="post-buttons">
-          <button className="save-button" >Save</button>
+          <button className="save-button" onClick={() => handleSavePost(post.ID_post)}>Save</button>
           <button className="share-button" onClick={() => handleShare(post.image_url)}>
                 <FontAwesomeIcon icon={faLink} />
               </button>
