@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<PictagoLandingPage />} />
           <Route path="/add" element={<AddPost />}/>
           <Route path="/posts" element={<AllPost />}/>
-          <Route path="/post/:ID_post" element={<PostDetails />} />
+          <Route  path="/pins/:ID_post" element={<PostDetails />} />
           <Route path="/update/:ID_post" element={<UpdatePost/>} />
           <Route path="anime" element={<Anime/>} />
           <Route path="cooking" element={<Cooking/>} />

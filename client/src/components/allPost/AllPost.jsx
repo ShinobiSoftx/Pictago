@@ -62,7 +62,7 @@ function AllPost() {
           src={post.image_url}
           alt={post.title}
           onClick={() => handleClick(post)}
-        />
+        /> 
         <div className="post-buttons">
           <button className="save-button" >Save</button>
           <button className="share-button" onClick={() => handleShare(post.image_url)}>
