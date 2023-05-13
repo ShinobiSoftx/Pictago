@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PostDetails from "../PostDetails/PostDetails";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -14,12 +14,9 @@ function Anime() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/pins")
+      .get("http://localhost:5000/pins?category=anime")
       .then((response) => {
-        const animePosts = response.data.filter(
-          (post) => post.category === "anime"
-        );
-        setPosts(animePosts);
+        setPosts(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -29,6 +26,7 @@ function Anime() {
   const handleClick = (post) => {
     setSelectedPost(post);
   };
+
   if (selectedPost) {
     return <PostDetails post={selectedPost} />;
   }
@@ -48,29 +46,30 @@ function Anime() {
 
   return (
     <div className="post-container">
-      {posts.map((post) =>
-        post.category === "anime" ? (
-          <div className="post" key={post.ID_post}>
-            <div className="post-image">
-              <img
-                src={post.image_url}
-                alt={post.title}
-                onClick={() => handleClick(post)}
-              />
-               <div className="post-buttons">
-          <button className="save-button" >Save</button>
-          <button className="share-button" onClick={() => handleShare(post.image_url)}>
+      {posts.map((post) => (
+        <div className="post" key={post.ID_post}>
+          <div className="post-image">
+            <img
+              src={post.image_url}
+              alt={post.title}
+              onClick={() => handleClick(post)}
+            />
+            <div className="post-buttons">
+              <button className="save-button">Save</button>
+              <button
+                className="share-button"
+                onClick={() => handleShare(post.image_url)}
+              >
                 <FontAwesomeIcon icon={faLink} />
               </button>
-        </div>
             </div>
           </div>
-        ) : null
-      )}
+        </div>
+      ))}
       <Link to="/add" className="add-button">
-          <FontAwesomeIcon icon={faPlus} />
-        </Link>
-<ToastContainer />
+        <FontAwesomeIcon icon={faPlus} />
+      </Link>
+      <ToastContainer />
     </div>
   );
 }

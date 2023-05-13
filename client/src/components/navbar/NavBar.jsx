@@ -1,8 +1,7 @@
 import React, { Fragment, useState } from 'react'
-import {HiSearch} from 'react-icons/hi'
 import { NavLink} from 'react-router-dom'
 import './Navbar.css'
-function Navbar() {
+function Navbar({setTitle}) {
     const [toggle, setToggle] = useState(true)
 return (
     <Fragment>
@@ -22,13 +21,16 @@ return (
                 <span id={toggle ? 'Movies' : 'MoviesLight'}>Pricing</span>
                 </NavLink>
             </div>
-            <div className='input-group'>
-            <input type='text' placeholder='Search for a post'/>
-            <HiSearch fontSize={21} color="green" id='search'/>
+        <div className="input-group">
+                    <div className="form-outline">
+                        <input type="search" id="form1" className="form-control" placeholder="Search Whatever You Want" onChange={(e)=>setTitle(e.target.value)} />
+                        <label className="form-label" htmlFor="form1">Search</label>
+                    </div>
+
             <div id='Color-switcher' onClick={()=> setToggle(!toggle)}>
                 <div id={toggle ? 'Color-switcher-mover' :  'Color-switcher-moved'}></div>
             </div>
-            </div>
+        </div>
             
         </nav>
     </Fragment>

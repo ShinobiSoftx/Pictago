@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PostDetails from "../PostDetails/PostDetails";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,8 +10,8 @@ import "./AllPost.css";
 
 
 
-function AllPost() {
-  const [posts, setPosts] = useState([]);
+function AllPost({posts}) {
+
   const [selectedPost, setSelectedPost] = useState(null);
 
 
@@ -25,11 +24,7 @@ function AllPost() {
   }
   const shuffledPosts = shuffleArray(posts);
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/pins").then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
+
 
   const handleClick = (post) => {
     setSelectedPost(post);

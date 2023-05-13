@@ -14,7 +14,7 @@ function Travel() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/pins")
+      .get("http://localhost:5000/pins?category=travel")
       .then((response) => {
         const travelPosts = response.data.filter(
           (post) => post.category === "travel"

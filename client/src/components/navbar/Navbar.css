@@ -1,5 +1,5 @@
 nav {
-    width: 100vw;
+    width: 3000px;
     display: flex;
     justify-content: space-between;
     background-color: #001219;
@@ -49,11 +49,6 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
     border-bottom: 2px solid #ff206e;
     padding-bottom: 5px;
 }
-.input-group{
-    display: flex;
-    align-items: center;
-    border-top-right-radius: 50%;
-}
 #Color-switcher{
     position: relative;
     margin-left: 700px;
@@ -82,27 +77,51 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
     border-radius: 50%;
     transition: .6s;
 }
+
+.input-group{
+    display: flex;
+    align-items: center;
+    border-radius: 46px;
+    height: 100%;
+    margin-left: 20px; /* add margin to push input to the center */
+    margin-right: 20px;
+}
+
 .input-group input{
     position: relative;
-    width: 323px;
-    height: 4vh;
-    border-radius: 46px;
+    width: 800px;
+    height: 100%;
     border: none;
-    margin-left: 60px;
+    margin-left: 200px;
+    overflow: hidden;
+    border-radius: 46px;
+    margin-right: 20px;
+    margin-top: 20px;
 }
+
 .input-group input[type='text']{
     padding-left: 27px;
     font-size: 1rem;
     color: black;
+    margin-right: 20px;
+    margin-top: 8px;
 }
+
 .input-group input::placeholder{
     color: black;
+    margin-right: 20px;
+    margin-top: 8px;
 }
+
 .input-group input:focus{
     outline: none;
+    margin-right: 20px;
+    margin-top: 0px;
 }
-#search{
-    position: absolute;
-    margin-left: 350px;
-    margin-top: 10px;
+
+.nav-options{
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;
+    flex-grow: 1; /* grow to fill remaining space */
 }

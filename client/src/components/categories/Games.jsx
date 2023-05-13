@@ -14,7 +14,7 @@ function Games() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/pins")
+      .get("http://localhost:5000/pins?category=games")
       .then((response) => {
         const GamesPosts = response.data.filter(
           (post) => post.category === "games"
