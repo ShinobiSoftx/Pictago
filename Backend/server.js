@@ -9,33 +9,31 @@ const connection= require('./database/index');
 const { title } = require('process');
 
 
-app.get('/pins',(req,res) => {
-  connection.query('SELECT * FROM posts',function(err, result) {
-     if (err) {
-       console.log(err)
-     }
-     res.json(result)
-   })
- })
 
-app.get('/pins',(req,res) => {
+app.get('/pins', (req, res) => {
   try {
-    const { title  } = req.query;
-    connection.query(
-      'SELECT * FROM posts WHERE title LIKE ?', ['%' + title + '%'], function (err, result) {
-        if (err) {
-          console.log(err);
-          res.status(500).send('Error querying database');
-        } else {
-          res.json(result);
-        }
+    const { title, category } = req.query;
+    let query = 'SELECT * FROM posts WHERE title LIKE ?';
+    let queryParams = ['%' + title + '%'];
+
+    if (category) {
+      query += ' AND category = ?';
+      queryParams.push(category);
+    }
+
+    connection.query(query, queryParams, function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Error querying database');
+      } else {
+        res.json(result);
       }
-    );
+    });
   } catch (e) {
     console.log(e);
     res.status(500).send('Error processing request');
   }
-})
+});
 
 app.get('/pins/:ID_post', (req, res) => {
   const { ID_post } = req.params;
