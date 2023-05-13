@@ -33,8 +33,8 @@ app.get('/pins/:ID_post', (req, res) => {
 
 
 app.post("/addpost", (req,res) => {
-const {title,description,created_at,image_url} = req.body
-  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url},(err) => {
+const {title,description,created_at,image_url,category} = req.body
+  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url,category},(err) => {
     if (err) return res.send(err)
     res.send("post added")
   });
