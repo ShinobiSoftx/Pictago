@@ -11,8 +11,8 @@ import "./AllPost.css";
 
 
 
-function AllPost() {
-  const [posts, setPosts] = useState([]);
+function AllPost({posts}) {
+
   const [selectedPost, setSelectedPost] = useState(null);
 
 
@@ -25,11 +25,7 @@ function AllPost() {
   }
   const shuffledPosts = shuffleArray(posts);
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/pins").then((res) => {
-      setPosts(res.data);
-    });
-  }, []);
+
 
   const handleClick = (post) => {
     setSelectedPost(post);

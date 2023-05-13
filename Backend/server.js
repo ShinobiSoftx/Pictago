@@ -6,16 +6,34 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 const connection= require('./database/index');
+const { title } = require('process');
 
 
-app.get('/pins',(req,res) => {
- connection.query('SELECT * FROM posts',function(err, result) {
-    if (err) {
-      console.log(err)
+
+app.get('/pins', (req, res) => {
+  try {
+    const { title, category } = req.query;
+    let query = 'SELECT * FROM posts WHERE title LIKE ?';
+    let queryParams = ['%' + title + '%'];
+
+    if (category) {
+      query += ' AND category = ?';
+      queryParams.push(category);
     }
-    res.json(result)
-  })
-})
+
+    connection.query(query, queryParams, function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Error querying database');
+      } else {
+        res.json(result);
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send('Error processing request');
+  }
+});
 
 app.get('/pins/:ID_post', (req, res) => {
   const { ID_post } = req.params;
@@ -33,8 +51,8 @@ app.get('/pins/:ID_post', (req, res) => {
 
 
 app.post("/addpost", (req,res) => {
-const {title,description,created_at,image_url,category} = req.body
-  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url,category},(err) => {
+const {title,description,created_at,image_url} = req.body
+  connection.query("INSERT INTO posts SET ?",{title,description,created_at,image_url},(err) => {
     if (err) return res.send(err)
     res.send("post added")
   });
