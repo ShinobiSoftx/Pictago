@@ -1,10 +1,11 @@
 nav {
-    width: 3000px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: #001219;
     align-items: center;
     padding: 2px;
+    height: 70px;
 }
 nav h1{
     color: #fff;
@@ -50,12 +51,13 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
     padding-bottom: 5px;
 }
 #Color-switcher{
-    position: relative;
-    margin-left: 700px;
-    background-color: #413E44;
+    
     width: 80px;
     height: 40px;
+    position: relative;
+    background-color: #413E44;
     border-radius: 20px;
+    margin-left: auto;
 }
 #Color-switcher-mover{
     position: absolute;
@@ -78,14 +80,16 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
     transition: .6s;
 }
 
-.input-group{
+  
+
+.input-group {
     display: flex;
     align-items: center;
     border-radius: 46px;
     height: 100%;
-    margin-left: 20px; /* add margin to push input to the center */
-    margin-right: 500px;
-}
+    margin-bottom: 20px;
+  }
+  
 
 .input-group input{
     position: relative;
@@ -104,6 +108,8 @@ span #HomeLight:hover, #MoviesLight:hover, #TrendingLight:hover, #PricingLight:h
     color: black;
     margin-right: 20px;
     margin-top: 8px;
+    display: flex;
+    margin-left: 50px;
 }
 
 .input-group input::placeholder{

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Cooking() {
+function Cooking({handleSavePost}) {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
 
@@ -58,7 +58,7 @@ function Cooking() {
                 onClick={() => handleClick(post)}
               />
                <div className="post-buttons">
-          <button className="save-button" >Save</button>
+               <button className="save-button" onClick={() => handleSavePost(post.ID_post)}>Save</button>
           <button className="share-button" onClick={() => handleShare(post.image_url)}>
                 <FontAwesomeIcon icon={faLink} />
               </button>

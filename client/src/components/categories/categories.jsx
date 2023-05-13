@@ -31,6 +31,26 @@ const Categories = () => {
             <i className="fas fa-plane"></i> Travel
           </Link>
         </li>
+        <li>
+          <Link className="category-link" to="/music">
+            <i className="fas fa-music"></i> Music
+          </Link>
+        </li>
+        <li>
+        <Link className="category-link" to="/decoration">
+            <i className="fas fa-couch"></i> Decoration
+          </Link>
+        </li>
+        <li>
+          <Link className="category-link" to="/fitness">
+            <i className="fas fa-dumbbell"></i> Fitness
+          </Link>
+        </li>
+        <li>
+          <Link className="category-link" to="/vehicles">
+            <i className="fas fa-car"></i> Vehicles
+          </Link>
+        </li>
       </ul>
     </div>
   );
