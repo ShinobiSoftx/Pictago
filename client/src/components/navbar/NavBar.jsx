@@ -17,8 +17,8 @@ return (
                 <NavLink to="/categories" style={({isActive}) => {return {color:isActive ? '#fff' : '#EE9B00'}}} >
                 <span id={toggle ? 'Movies' : 'MoviesLight'}>Categories</span>
                 </NavLink>
-                <NavLink to="/Pricing" style={({isActive}) => {return {color:isActive ? '#fff' : '#EE9B00'}}} >
-                <span id={toggle ? 'Movies' : 'MoviesLight'}>Pricing</span>
+                <NavLink to="/saved" style={({isActive}) => {return {color:isActive ? '#fff' : '#EE9B00'}}} >
+                <span id={toggle ? 'Movies' : 'MoviesLight'}>Saved</span>
                 </NavLink>
             </div>
         <div className="input-group">

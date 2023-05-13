@@ -49,6 +49,7 @@ const UpdatePost = () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
+
         });
       })
       .catch(err => {
