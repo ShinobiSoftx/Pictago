@@ -5,9 +5,10 @@ import "./LandingPage.css";
 function PictagoLandingPage() {
   const [imageIndex, setImageIndex] = useState(0);
   const images = [
-    "/assets/images/img_1.jpg",
-    "/assets/images/img_2.jpg",
-    "/assets/images/img_3.jpg",
+    "/assets/images/img_1.png",
+    "/assets/images/img_2.png",
+    "/assets/images/img_3.png",
+    "/assets/images/img_4.png"
   ];
 
   useEffect(() => {
@@ -28,20 +29,19 @@ function PictagoLandingPage() {
       </header>
 
       <section className="hero">
-        <div className="hero-content">
-          <h2>Share your photos with the world</h2>
-          <p>
-            Pictago is the best platform to share your photos with friends,
-            family and the world. Upload your photos and showcase your talent to
-            the world.
-          </p>
-          <Link to="/posts"><button>Join Pictago</button></Link>
-        </div>
-        <div className="hero-image">
-          <img src={images[imageIndex]} alt="Pictago app" />
-        </div>
-      </section>
-
+  <div className="hero-image">
+    <img src={images[imageIndex]} alt="Pictago app" />
+  </div>
+  <div className="hero-content">
+    <h2>Share your photos with the world</h2>
+    <p>
+      Pictago is the best platform to share your photos with friends,
+      family and the world. Upload your photos and showcase your talent to
+      the world.
+    </p>
+    <Link to="/posts"><button>Join Pictago</button></Link>
+  </div>
+</section>
 
       <section className="features">
         <h2>Why Pictago?</h2>
