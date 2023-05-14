@@ -2,35 +2,48 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  justify-content: center;
+  width: 50%;
   margin: 0 auto;
   background-color: #ffffff;
   padding: 30px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 60px;
+  border-radius: 50px
 }
 
 .update-form label {
   font-size: 20px;
   margin-bottom: 10px;
+  width: 50%;
+  border-radius: 50px
 }
 
 .update-form input,
 .update-form textarea {
   font-size: 18px;
-  padding: 12px;
-  width: 100%;
+  padding: 30px;
+  width: 300px;
   margin-bottom: 24px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  
 }
+
+
 
 .update-form input[type="file"] {
   margin-bottom: 36px;
+  width: 50%
 }
 
 .update-form .selected-image p {
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  width: 50%;
+  border-radius : 50px;
 }
 
 .update-form button {
@@ -42,6 +55,7 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  
 }
 
 .update-form button:hover {
@@ -55,16 +69,24 @@
   justify-content: center;
   width: 80%;
   margin: 0 auto;
+  
 }
 
 .image-container {
   margin-right: 20px;
-  width: 40%;
+  width: 50%;
   max-width: 400px;
+  margin-top: 100px;
 }
 
 .image-container img {
   width: 100%;
+}
+.image-container  img:hover {
+  animation: shake 0.5s, up 0.5s;
+  animation-iteration-count: infinite;
+  filter: brightness(70%);
+  transform: translateY(-5px);
 }
 
 .form-container {
@@ -88,4 +110,17 @@
   .form-container {
     width: 100%;
   }
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5px, 0); }
+  50% { transform: translate(0, 0); }
+  75% { transform: translate(5px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes up {
+  0% { top: 0; }
+  100% { top: -10px; }
 }

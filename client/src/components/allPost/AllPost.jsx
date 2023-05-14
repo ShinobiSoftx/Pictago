@@ -1,6 +1,4 @@
-import React,{useState} from "react";
 import { Link } from "react-router-dom";
-import PostDetails from "../PostDetails/PostDetails";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { toast } from "react-toastify";
@@ -10,10 +8,7 @@ import "./AllPost.css";
 
 
 
-function AllPost({posts}) {
-
-  const [selectedPost, setSelectedPost] = useState(null);
-
+function AllPost({posts, handleSavePost}) {
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -25,10 +20,6 @@ function AllPost({posts}) {
   const shuffledPosts = shuffleArray(posts);
 
 
-
-  const handleClick = (post) => {
-    setSelectedPost(post);
-  };
 
   const handleShare = (imageUrl) => {
     navigator.clipboard.writeText(imageUrl);
@@ -43,23 +34,18 @@ function AllPost({posts}) {
     });
   };
 
-  if (selectedPost) {
-    return <PostDetails post={selectedPost} />;
-  }
-
   return (
     <div>
 <div className="post-container">
   {shuffledPosts.map((post) => (
     <div className="post" key={post.ID_post}>
       <div className="post-image">
-        <img
+       <Link to={`/post/${post.ID_post}`}> <img
           src={post.image_url}
           alt={post.title}
-          onClick={() => handleClick(post)}
-        />
+        /> </Link>
         <div className="post-buttons">
-          <button className="save-button" >Save</button>
+          <button className="save-button" onClick={() => handleSavePost(post.ID_post)}>Save</button>
           <button className="share-button" onClick={() => handleShare(post.image_url)}>
                 <FontAwesomeIcon icon={faLink} />
               </button>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PostDetails from "../PostDetails/PostDetails";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { toast } from "react-toastify";
@@ -8,13 +7,12 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Games() {
+function Games({handleSavePost}) {
   const [posts, setPosts] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/pins")
+      .get("http://localhost:5000/pins?category=games")
       .then((response) => {
         const GamesPosts = response.data.filter(
           (post) => post.category === "games"
@@ -25,13 +23,6 @@ function Games() {
         console.log(error);
       });
   }, []);
-
-  const handleClick = (post) => {
-    setSelectedPost(post);
-  };
-  if (selectedPost) {
-    return <PostDetails post={selectedPost} />;
-  }
 
   const handleShare = (imageUrl) => {
     navigator.clipboard.writeText(imageUrl);
@@ -52,13 +43,12 @@ function Games() {
         post.category === "games" ? (
           <div className="post" key={post.ID_post}>
             <div className="post-image">
-              <img
-                src={post.image_url}
-                alt={post.title}
-                onClick={() => handleClick(post)}
-              />
+            <Link to={`/post/${post.ID_post}`}> <img
+          src={post.image_url}
+          alt={post.title}
+        /> </Link>
                <div className="post-buttons">
-          <button className="save-button" >Save</button>
+          <button className="save-button" onClick={() => handleSavePost(post.ID_post)} >Save</button>
           <button className="share-button" onClick={() => handleShare(post.image_url)}>
                 <FontAwesomeIcon icon={faLink} />
               </button>

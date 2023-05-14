@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Anime({handleSavePost}) {
+function Saved() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/pins?category=anime")
+      .get("http://localhost:5000/pins?saved=1")
       .then((response) => {
         setPosts(response.data);
       })
@@ -35,6 +35,41 @@ function Anime({handleSavePost}) {
     });
   };
 
+  const handleUnsavePost = (postId) => {
+    axios.put(`http://localhost:5000/updateSaved/${postId}`, { saved: 0 })
+      .then(res => {
+        const updatedPosts = posts.map(post => {
+          if (post.ID_post === postId) {
+            return { ...post, saved: 0 };
+          }
+          return post;
+        });
+        setPosts(updatedPosts);
+        toast.dark('Post removed from Saved!', {
+          position: 'bottom-center',
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          style: {
+            backgroundColor: '#1E1E1E',
+            color: '#FFFFFF',
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+          },
+        });
+        setTimeout(() => {
+            window.location.href = '/saved';
+          }, 2000);
+      })
+      
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="post-container">
       {posts.map((post) => (
@@ -45,7 +80,7 @@ function Anime({handleSavePost}) {
           alt={post.title}
         /> </Link>
             <div className="post-buttons">
-              <button className="save-button" onClick={() => handleSavePost(post.ID_post)}>Save</button>
+              <button className="save-button" onClick={() => handleUnsavePost(post.ID_post)}>Unsave</button>
               <button
                 className="share-button"
                 onClick={() => handleShare(post.image_url)}
@@ -64,4 +99,4 @@ function Anime({handleSavePost}) {
   );
 }
 
-export default Anime;
+export default Saved;
