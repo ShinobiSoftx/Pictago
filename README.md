@@ -39,7 +39,7 @@ To install and run Pictago on your local machine, follow these steps:
 
 Clone this repository: git clone https://github.com/ShinobiSoftx/Pictago-GreenField-Project-RBK.git
 
-Change the directory to the backend then install the dependencies: (npm install) , in both backend and client . 
+Change the directory  then install the dependencies: (npm install) , in both backend and client . 
 
 Start the server: cd backend / npm start
 
