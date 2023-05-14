@@ -21,13 +21,12 @@ function PictagoLandingPage() {
 
   return (
     <div>
-      {/* Header section */}
+
       <header>
         <h1>Pictago</h1>
         <p>The ultimate photo-sharing platform</p>
       </header>
 
-      {/* Hero section */}
       <section className="hero">
         <div className="hero-content">
           <h2>Share your photos with the world</h2>
@@ -43,7 +42,7 @@ function PictagoLandingPage() {
         </div>
       </section>
 
-      {/* Features section */}
+
       <section className="features">
         <h2>Why Pictago?</h2>
         <ul>
@@ -52,13 +51,11 @@ function PictagoLandingPage() {
         </ul>
       </section>
 
-      {/* Call to action section */}
       <section className="call-to-action">
         <h2>Join Pictago today</h2>
         <button onClick={() => window.location.href = '/'}>Sign up now</button>
       </section>
 
-      {/* Footer section */}
       <footer>
         <p>&copy; 2023 Pictago. All rights reserved.</p>
       </footer>
