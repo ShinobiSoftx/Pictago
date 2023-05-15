@@ -21,6 +21,8 @@ import Decoration from "./components/categories/Photography";
 import Vehicles from "./components/categories/Vehicles";
 import Fitness from "./components/categories/Fitness";
 import Music from "./components/categories/Music";
+import Login from "./components/login/login";
+import Signup from "./components/login/Singup";
 
 
 
@@ -76,6 +78,8 @@ function App() {
         <Navbar  setTitle={setTitle} />
         <Routes>
           <Route path="/" element={<PictagoLandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
           <Route path="/add" element={<AddPost />}/>
           <Route path="/posts" element={<AllPost  posts={posts} handleSavePost={handleSavePost}/>}/>
           <Route path="/post/:ID_post" element={<PostDetails />} />
@@ -91,6 +95,7 @@ function App() {
           <Route path="/decoration" element={<Decoration handleSavePost={handleSavePost}/>} />
           <Route path="/categories" element={<Categories/>} />
           <Route path="/saved" element={<Saved />} />
+
         </Routes>
       </BrowserRouter>
     </div>

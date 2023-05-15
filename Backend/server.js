@@ -14,6 +14,8 @@ const { title } = require('process');
 
 
 
+
+
 app.get('/pins', (req, res) => {
   try {
     const { title, category, saved } = req.query;
@@ -196,5 +198,36 @@ else {res.send("comment deleted")}
 )
 
 })
+
+//login
+app.post('/login/post',(req,res)=>{
+  const{name,email,password}=req.body
+  connection.query("INSERT INTO users SET ?",
+    { name, email, password,},
+    (err) => {
+      if (err) return res.send(err);
+      res.send("user added");
+    }
+  );
+})
+
+app.get('/users', (req, res) => {
+  connection.query(
+    'SELECT * FROM users',
+    function(err, result) {
+      if (err) {
+        console.log(err)
+        res.status(500).send('Error fetching users')
+      }
+      res.send(result)
+    }
+  )
+});
+
+
+
+
+
+
 
 app.listen(PORT,()=>console.log(`Server listening on port : ${PORT}`))
