@@ -1,0 +1,38 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .login-input {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 300px;
+    max-width: 100%;
+  }
+  
+  .login-button {
+    margin: 10px auto;
+    padding: 5px 10px;
+    background-color: rgb(255, 174, 0);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+  }
+  
+  
+  .create-account {
+    margin-top: 20px;
+  }
+  
+  .create-account-link {
+    color: blue;
+    text-decoration: underline;
+  }
+  
