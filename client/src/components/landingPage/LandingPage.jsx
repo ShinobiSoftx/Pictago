@@ -53,7 +53,8 @@ function PictagoLandingPage() {
 
       <section className="call-to-action">
         <h2>Join Pictago today</h2>
-        <button onClick={() => window.location.href = '/'}>Sign up now</button>
+        <Link to="/login"><button >Sign up now</button></Link>
+        
       </section>
 
       <footer>
