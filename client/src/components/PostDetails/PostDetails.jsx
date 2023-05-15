@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link , useParams } from 'react-router-dom';
 import './PostDetails.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -140,9 +140,6 @@ const PostDetails = () => {
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                   <div className="icon-space"></div>
-                  <button>
-                    <FontAwesomeIcon icon={faPen} />
-                  </button>
                 </div>
               </div>
             ))}
