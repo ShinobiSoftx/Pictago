@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `pictago`.`posts` (
   `saved` TINYINT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID_post`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 53
+AUTO_INCREMENT = 60
 DEFAULT CHARACTER SET = utf8mb3;
 
 
@@ -47,7 +47,20 @@ CREATE TABLE IF NOT EXISTS `pictago`.`comments` (
     FOREIGN KEY (`posts_ID_post`)
     REFERENCES `pictago`.`posts` (`ID_post`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 18
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `pictago`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pictago`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 

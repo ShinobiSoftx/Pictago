@@ -39,7 +39,7 @@ function PictagoLandingPage() {
       family and the world. Upload your photos and showcase your talent to
       the world.
     </p>
-    <Link to="/posts"><button>Join Pictago</button></Link>
+    <Link to="/posts"><button>Join as a guest ! </button></Link>
   </div>
 </section>
 
